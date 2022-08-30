@@ -12,22 +12,22 @@ class Game {
     start() {
       // Intro
       alert(
-        "Welcome to the number guessing game!\n\nYou'll  be asked to guess a whole number between 1 and 100.\n\nGood luck!"
+        "Gaze upon a crystal ball or otherwise access powers of prognostication!\n\nYou'll  be asked to guess a whole number between 1 and 100.\n\nGood luck!"
       );
   
-      // Generate the answer
+      // generate random answer
       this.answer = this.generateNumber(1, 100);
   
-      // Change the state to is playing
+      // change to is playing
       this.isPlaying = true;
   
-      // Start timer
+      // timer starts counting
       this.timer = setInterval(() => {
         console.log("timer", this.time)
         this.time++;
       }, 1000);
   
-      // Begin turns
+      // player starts turn
       this.turns();
     }
   
@@ -46,11 +46,11 @@ class Game {
         alert("You didn't give me a valid number...");
       } else {
         if (this.guess > this.answer) {
-          alert("Too high");
+          alert("Too high. Better luck next time!");
         } else if (this.guess < this.answer) {
-          alert("Too low");
+          alert("Too low. Better luck next time!");
         } else {
-          alert(`Correct!`);
+          alert(`Congratulations, today is your lucky day!`);
   
           this.end();
         }
@@ -60,7 +60,7 @@ class Game {
         this.turns();
       }
     }
-  
+     // timer stops and returns score and time 
     end() {
       alert(
         `You finished with a score of ${this.score} in ${this.time} seconds.`

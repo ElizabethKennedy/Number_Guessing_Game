@@ -1,106 +1,85 @@
 let min = 1;
-let max = 100;
-let rand = Math.floor(Math.random() * max) +1;
-let isPlaying = true
+let isPlaying = true;
+
+let level = 10;
+let guesses = [];
+let easyLevel = 10;
+let mediumLevel = 100;
+let hardLevel = 1000;
+selectDifficulty();
+let rand= getNumber();
 
 while (isPlaying) {
-    turn()
+  turn();
 }
-    function turn() {
-    let input = prompt.textContent = `Hello, ${this.name}! Can you guess my favorite 
-    number between ${min} and ${max}?.`
-        
-    
-    
-    Number.parseInt(prompt(`What is my favorite number between ${min} and ${max}?`)); 
-    if (input < rand) {
-        alert ("Too low. Better luck next time.");
-        } else if (input > rand) {
-        alert ("Too high. Better luck next time.");
-        } else if (input == rand) {
-        alert ("Congratulations! Today is your lucky day.");
-        isPlaying = false;
-        }  else {
-        alert (`Please enter a valid number between ${min} and ${max}.`);
-        
-    }
+function turn() {
+  let input =
+   Number(prompt(`Hello! Can you guess my favorite 
+    number between ${min} and ${level}?.`));
+
+  if (isNaN (input)) {
+    return alert(`Please enter a valid number between ${min} and ${level}.`);
+  }
+  if (input < rand) {
+    alert("Too low. Better luck next time.");
+  } else if (input > rand) {
+    alert("Too high. Better luck next time.");
+  } else if (input == rand) {
+    alert("Congratulations! Today is your lucky day.");
+    isPlaying = false;
+  }
+  
 }
 
-prompt.textContent = `Hello, ${this.name}! Please select your preferred level of difficulty.`
 
 
-let level = o;
-let randomNumbers = [];
-let easyLevel = [1];
-let mediumLevel = [2];
-let hardLevel = [3];
+
 
 // select difficulty level //
 
-function changeDifficulty(difficulty = 0){
-    level = difficulty
-    randomNumbers = [];
+function selectDifficulty() {
+  
+  let difficulty =   prompt(`Hello, ${this.name}! Please select your preferred level of difficulty.`);
 
-    if (level === 0) {
-        randomNumbers.push(mediumLevel);
-    } else if (level === 1) {
-        randomNumbers.push(easyLevel);
-    } else if (level === 2) {
-        randomNumbers.push(mediumLevel);
-    } else if (level === 3) {
-        randomNumbers.push(hardLevel);
-    }
-
+  
+  if (difficulty === "1") {
+    level = easyLevel;
+  } else if (difficulty === "2") {
+    level = mediumLevel;
+  } else if (difficulty === "3") {
+    level = hardLevel;
+  }
+  
 }
-console.log(randomNumbers);
 
-getNumber();
-    
+
+
 // generate random number //
 
 function getNumber() {
-    let answer = randomNumbers[Math.floor(Math.random()*randomNumbers.length)];
-    console.log(answer);
+  return Math.floor(Math.random() * level) +1;
 }
-        //call functions //
+//call functions //
 
-        changeDifficulty();
 
-        
-    
-    gameStart() 
-        input.setAttribute("type", "number");
-        input.min = "1";
-        input.max = `${this.mode}`;
-        prompt.textContent = `Guess a number between 1 and ${this.mode}!`
-        this.rand = Math.floor(Math.random() * this.mode + 1);
-        this.count = 7;
-        info.textContent = `Guesses remaining: ${this.count}`;
-        info.hidden = false;
-        input.hidden = false;
-        button.onclick = () => {
-            this.guess(input.value);
-        };
-    
-    guess(guess) {
-        console.log(guess);
-        if(guess == this.rand) {
-            input.value = "";
-            this.right();
-        } else {
-            input.value = "";
-            this.wrong();
-        }
-    }
-    right = luckyYou() {
-        console.log("Lucky you!");
-        
-    }
-    wrong = betterLuckNextTime() {
-        console.log("Better Luck Next Time");
-        
-    }
-    replay = wannaSpinAgain() {
-        console.log("Wanna Spin Again?");
 
-    }
+
+function guess(guess) {
+  console.log(guess);
+  if (guess == rand) {
+    input.value = "";
+    right();
+  } else {
+    input.value = "";
+   wrong();
+  }
+}
+function right() {
+  console.log("Lucky you!");
+}
+function wrong() {
+  console.log("Better Luck Next Time");
+}
+function replay() {
+  console.log("Wanna Spin Again?");
+}
